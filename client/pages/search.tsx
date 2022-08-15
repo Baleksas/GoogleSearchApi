@@ -2,6 +2,7 @@ import { ImageList, ImageListItem, Typography } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 import Song from "../components/Song";
 
@@ -11,7 +12,6 @@ export async function getServerSideProps(context: any) {
   const req = await fetch(url);
   const data = await req.json();
   const topResults = data.items;
-
   return {
     props: {
       topResults,
@@ -19,19 +19,24 @@ export async function getServerSideProps(context: any) {
   };
 }
 const Search: NextPage = ({ topResults }: any) => {
-  const [results, setResults] = useState(null);
-  console.log(topResults);
+  const router = useRouter();
+  const customSearch = null;
+  console.log(router);
   return (
     <div>
-      <Typography variant="h4">Recommended songs from your source</Typography>
-      <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+      <Typography variant="h4">
+        {customSearch
+          ? "Recommended songs from your source"
+          : "There was an issue. Here are some reccomendations to disocver:"}{" "}
+      </Typography>
+      <ImageList sx={{ width: 1000, height: 600 }} cols={4} rowHeight={250}>
         {topResults.map((result: any) => (
           <ImageListItem key={result.cacheId}>
-            <Image
-              src={`${result.pagemap.cse_image[0].src}?w=164&h=164&fit=crop&auto=format`}
-              alt={result.title}
-              layout="fill"
-              loading="lazy"
+            <Song
+              size={"150"}
+              name={result.title}
+              link={result.link}
+              image={`${result.pagemap.cse_image[0].src}`}
             />
           </ImageListItem>
         ))}
