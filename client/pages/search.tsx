@@ -1,4 +1,5 @@
 import {
+  Alert,
   Box,
   Button,
   FilledInput,
@@ -29,17 +30,36 @@ export async function getServerSideProps(context: any) {
     },
   };
 }
-const Search: NextPage = ({ topResults }: any) => {
+const Search: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");
-  const [receivedData, setReceivedData] = useState<boolean>(false);
+  const [error, setError] = useState<{
+    errorStatus: string;
+    errorCode: number;
+  } | null>(null);
+  const [receivedData, setReceivedData] = useState<Array<object>>();
+
   const fetchSongs = async () => {
     const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.API}&cx=${process.env.CX}&q=${searchText}}`;
     console.log("Search url: ", url);
-    // const req = await fetch(url);
-    // if (req.status === 200) {
-    //   setReceivedData(true);
-    // }
-    // const data = await req.json();
+
+    fetch(url)
+      .then((response) => {
+        const data = response.json();
+        return data;
+      })
+      .then((data) => {
+        if (data.ok) setReceivedData(data);
+        if (!data.ok) {
+          console.log(data);
+          setError({
+            errorCode: data.error.code,
+            errorStatus: data.error.status,
+          });
+        }
+      })
+      .catch((err) => {
+        throw err;
+      });
   };
   return (
     <Container>
@@ -50,6 +70,7 @@ const Search: NextPage = ({ topResults }: any) => {
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
+
         <Button
           onClick={() => fetchSongs()}
           variant="contained"
@@ -58,14 +79,20 @@ const Search: NextPage = ({ topResults }: any) => {
         >
           Search
         </Button>
+        {error && (
+          <Alert severity="error">
+            {error.errorCode}:{error.errorStatus}
+          </Alert>
+        )}
       </FormControl>
+
       {receivedData && (
         <Box>
           <Typography variant="h4">
             Recommended songs from your source
           </Typography>
           <ImageList sx={{ width: 1000, height: 600 }} cols={4} rowHeight={250}>
-            {topResults.map((result: any) => (
+            {receivedData.map((result: any) => (
               <ImageListItem key={result.cacheId}>
                 <Song
                   size={"150"}
