@@ -1,13 +1,17 @@
+import { ImageList, ImageListItem } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import React, { useState } from "react";
+import Song from "../components/Song";
+
 export async function getServerSideProps(context: any) {
   const search_text = "I love you";
   const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.API}&cx=${process.env.CX}&q=${search_text}}`;
   const req = await fetch(url);
   const data = await req.json();
   const topResults = data.items;
+
   return {
     props: {
       topResults,
@@ -19,14 +23,18 @@ const Search: NextPage = ({ topResults }: any) => {
   console.log(topResults);
   return (
     <div>
-      {topResults.map((result: any) => (
-        <React.Fragment key={result.cacheId}>
-          <div>{result.link}</div>
-          <a rel="noreferrer" href={result.link} target="_blank">
-            {result.title}
-          </a>
-        </React.Fragment>
-      ))}
+      <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
+        {topResults.map((result: any) => (
+          <ImageListItem key={result.cacheId}>
+            <Image
+              src={`${result.pagemap.cse_image[0].src}?w=164&h=164&fit=crop&auto=format`}
+              alt={result.title}
+              layout="fill"
+              loading="lazy"
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
     </div>
   );
 };
