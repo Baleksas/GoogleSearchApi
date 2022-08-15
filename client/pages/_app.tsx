@@ -1,14 +1,24 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import Navbar from "../components/Navbar";
 import { useState } from "react";
+import ResponsiveAppBar from "../components/Appbar";
+import { Container } from "@mui/material";
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [searchText, setSearchText] = useState(null);
   return (
     <>
-      <Navbar />
-      <Component {...pageProps} searchText setSearchText />
+      <ResponsiveAppBar />
+      <Container
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          backgroundColor: "white",
+          height: "auto",
+        }}
+        maxWidth="lg"
+      >
+        <Component {...pageProps} />
+      </Container>
     </>
   );
 }

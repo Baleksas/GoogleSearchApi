@@ -18,18 +18,6 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import Song from "../components/Song";
 
-export async function getServerSideProps(context: any) {
-  // const search_text = "I love you";
-  // const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.API}&cx=${process.env.CX}&q=${search_text}}`;
-  // const req = await fetch(url);
-  // const data = await req.json();
-  // const topResults = data.items;
-  return {
-    props: {
-      // topResults,
-    },
-  };
-}
 const Search: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");
   const [error, setError] = useState<{
