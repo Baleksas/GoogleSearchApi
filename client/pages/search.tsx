@@ -1,4 +1,4 @@
-import { ImageList, ImageListItem } from "@mui/material";
+import { ImageList, ImageListItem, Typography } from "@mui/material";
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
@@ -23,6 +23,7 @@ const Search: NextPage = ({ topResults }: any) => {
   console.log(topResults);
   return (
     <div>
+      <Typography variant="h4">Recommended songs from your source</Typography>
       <ImageList sx={{ width: 500, height: 450 }} cols={3} rowHeight={164}>
         {topResults.map((result: any) => (
           <ImageListItem key={result.cacheId}>
