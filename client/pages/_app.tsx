@@ -10,9 +10,10 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ResponsiveAppBar />
       <Container
         sx={{
+          margin: "auto",
           display: "flex",
           flexDirection: "column",
-          backgroundColor: "white",
+          backgroundColor: "lightblue",
           height: "auto",
         }}
         maxWidth="lg"

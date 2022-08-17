@@ -36,9 +36,8 @@ const Search: NextPage = () => {
         return data;
       })
       .then((data) => {
-        if (data.ok) setReceivedData(data);
-        if (!data.ok) {
-          console.log(data);
+        if ((data.context.title = "MusicSearch")) setReceivedData(data.items);
+        else {
           setError({
             errorCode: data.error.code,
             errorStatus: data.error.status,
@@ -79,7 +78,11 @@ const Search: NextPage = () => {
           <Typography variant="h4">
             Recommended songs from your source
           </Typography>
-          <ImageList sx={{ width: 1000, height: 600 }} cols={4} rowHeight={250}>
+          <ImageList
+            sx={{ width: 1000, height: 600, maxWidth: "100%" }}
+            cols={3}
+            rowHeight={250}
+          >
             {receivedData.map((result: any) => (
               <ImageListItem key={result.cacheId}>
                 <Song
