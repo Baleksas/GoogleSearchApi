@@ -8,7 +8,6 @@ import {
   styled,
 } from "@mui/material";
 import { ElementType, FC } from "react";
-import { useLocation } from "react-router-dom";
 
 const Nav = styled(List)<{ component?: ElementType }>({
   "& .MuiListItemButton-root": {
@@ -30,8 +29,6 @@ type Props = {
 };
 
 export const NavList: FC<Props> = ({ onClose, testID }) => {
-  const { pathname } = useLocation();
-
   return (
     <Nav component="nav" disablePadding data-testid={`${testID}-nav`}>
       <Box sx={{ display: { xs: "block", md: "none" }, mt: 3 }}>

@@ -12,7 +12,7 @@ import {
 import { Container } from "@mui/system";
 import type { NextPage } from "next";
 import { useState } from "react";
-import Song from "../../components/MainPage/MainPage";
+import Song from "../../components/Songs/Song";
 
 const Search: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");

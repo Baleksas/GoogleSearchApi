@@ -1,8 +1,6 @@
 import React from "react";
 import { Box, Drawer } from "@mui/material";
-import { drawerWidth } from "../PageLayout/constants";
-// import { TdsLogo } from "../TdsLogo";
-// import { UserAvatar } from "../UserAvatar";
+import { drawerWidth } from "./constants";
 import { NavList } from "./NavList";
 
 type Props = {

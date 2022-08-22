@@ -9,7 +9,7 @@ export async function getServerSideProps(context: any) {
   const url = `https://www.googleapis.com/customsearch/v1?key=${process.env.API}&cx=${process.env.CX}&q=${search_text}}`;
   const req = await fetch(url);
   const data = await req.json();
-  const topResults = data.items;
+  // const topResults = data.items;
   return {
     props: {
       // topResults,
@@ -17,7 +17,7 @@ export async function getServerSideProps(context: any) {
   };
 }
 const Home: NextPage = () => {
-  return <Container maxWidth="md"></Container>;
+  return <Container maxWidth="md">Home page</Container>;
 };
 
 export default Home;

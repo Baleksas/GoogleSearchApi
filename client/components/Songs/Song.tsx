@@ -10,7 +10,8 @@ interface Props {
   size: string;
 }
 
-const MainPage: React.FC<Props> = (props) => {
+// Recommended song unit
+const Song: React.FC<Props> = (props) => {
   return (
     <>
       <img
@@ -32,4 +33,4 @@ const MainPage: React.FC<Props> = (props) => {
   );
 };
 
-export default MainPage;
+export default Song;
