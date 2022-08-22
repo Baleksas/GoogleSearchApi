@@ -7,16 +7,12 @@ import {
   ImageList,
   ImageListItem,
   InputLabel,
-  TextField,
   Typography,
 } from "@mui/material";
 import { Container } from "@mui/system";
 import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
-import Song from "../components/Song";
+import { useState } from "react";
+import Song from "../../components/MainPage/MainPage";
 
 const Search: NextPage = () => {
   const [searchText, setSearchText] = useState<string>("");

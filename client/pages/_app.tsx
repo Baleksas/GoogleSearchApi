@@ -1,7 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { useState } from "react";
-import ResponsiveAppBar from "../components/Appbar";
+import ResponsiveAppBar from "../components/AppBar/Appbar";
 import { Container } from "@mui/material";
 
 function MyApp({ Component, pageProps }: AppProps) {

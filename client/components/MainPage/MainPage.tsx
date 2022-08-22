@@ -10,7 +10,7 @@ interface Props {
   size: string;
 }
 
-const Song: React.FC<Props> = (props) => {
+const MainPage: React.FC<Props> = (props) => {
   return (
     <>
       <img
@@ -32,4 +32,4 @@ const Song: React.FC<Props> = (props) => {
   );
 };
 
-export default Song;
+export default MainPage;
