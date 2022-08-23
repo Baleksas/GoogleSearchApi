@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Box, ImageListItemBar, Link, Typography } from "@mui/material";
-import Image from "next/image";
+import { Button, ImageListItemBar, Link } from "@mui/material";
 import React from "react";
 
 interface Props {
@@ -22,11 +21,14 @@ const Song: React.FC<Props> = (props) => {
         alt={props.name}
         loading="lazy"
       />
-      {/* <Link>{props.link}</Link> */}
       <ImageListItemBar
         sx={{ fontSize: "5px", maxWidth: "100%", maxHeight: "100%" }}
         title={props.name}
-        subtitle={<span>by: Testing</span>}
+        subtitle={
+          <Link component={Button} variant="button" href={props.link}>
+            Listen now {">"}
+          </Link>
+        }
         position="below"
       />
     </>

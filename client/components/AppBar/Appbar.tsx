@@ -1,19 +1,17 @@
-import * as React from "react";
+import MenuIcon from "@mui/icons-material/Menu";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
+import Container from "@mui/material/Container";
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import MusicNoteIcon from "@mui/icons-material/MusicNote";
-import Link from "next/link";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
 import type { NextPage } from "next";
+import Link from "next/link";
+import * as React from "react";
 const pages = ["Search"];
 
 const ResponsiveAppBar: NextPage = () => {
@@ -40,14 +38,19 @@ const ResponsiveAppBar: NextPage = () => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar
+      position="static"
+      sx={{
+        height: "8vh",
+      }}
+    >
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <MusicNoteIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
           <Typography
             variant="h6"
             noWrap
-            component="a"
+            component={Link}
             href="/"
             sx={{
               mr: 2,
@@ -59,7 +62,7 @@ const ResponsiveAppBar: NextPage = () => {
               textDecoration: "none",
             }}
           >
-            ONote
+            ONNote
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -107,7 +110,16 @@ const ResponsiveAppBar: NextPage = () => {
                     }}
                     href={`/${page.toLowerCase()}`}
                   >
-                    {page}
+                    <Button
+                      sx={{
+                        width: "100%",
+                        height: "100%",
+                        backgroundColor: "black",
+                      }}
+                      onClick={handleCloseNavMenu}
+                    >
+                      {page}
+                    </Button>
                   </Typography>
                 </MenuItem>
               ))}
@@ -118,14 +130,14 @@ const ResponsiveAppBar: NextPage = () => {
             variant="h5"
             noWrap
             component="a"
-            href=""
+            href="/"
             sx={{
               mr: 2,
               display: { xs: "flex", md: "none" },
               flexGrow: 1,
-              fontFamily: "monospace",
+              fontFamily: "Arial",
               fontWeight: 700,
-              letterSpacing: ".3rem",
+              letterSpacing: "-.05rem",
               color: "inherit",
               textDecoration: "none",
             }}

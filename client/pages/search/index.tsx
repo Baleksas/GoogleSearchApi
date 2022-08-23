@@ -46,14 +46,20 @@ const Search: NextPage = () => {
   };
   return (
     <Container>
-      <FormControl variant="filled">
+      <FormControl
+        variant="outlined"
+        sx={{
+          display: "flex",
+          margin: "auto",
+          flexDirection: "column",
+        }}
+      >
         <InputLabel htmlFor="component-filled">Search</InputLabel>
         <FilledInput
           id="component-filled"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
-
         <Button
           onClick={() => fetchSongs()}
           variant="contained"
@@ -75,9 +81,14 @@ const Search: NextPage = () => {
             Recommended songs from your source
           </Typography>
           <ImageList
-            sx={{ width: 1000, height: 600, maxWidth: "100%" }}
-            cols={3}
-            rowHeight={250}
+            sx={{
+              width: 1000,
+              maxHeight: "50vh",
+              maxWidth: "100%",
+              overflowX: "hidden",
+            }}
+            cols={2}
+            rowHeight={220}
           >
             {receivedData.map((result: any) => (
               <ImageListItem key={result.cacheId}>
