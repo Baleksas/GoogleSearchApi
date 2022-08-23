@@ -91,7 +91,13 @@ const Search: NextPage = () => {
             rowHeight={220}
           >
             {receivedData.map((result: any) => (
-              <ImageListItem key={result.cacheId}>
+              <ImageListItem
+                key={result.cacheId}
+                sx={{
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
                 <Song
                   size={"150"}
                   name={result.title}

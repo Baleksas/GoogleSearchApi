@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { Button, ImageListItemBar, Link } from "@mui/material";
+import { Box, Button, ImageListItemBar, Link } from "@mui/material";
 import React from "react";
 
 interface Props {
@@ -13,22 +13,36 @@ interface Props {
 const Song: React.FC<Props> = (props) => {
   return (
     <>
-      <img
-        height={props.size}
+      <Link
+        target="_blank"
+        component={Button}
+        variant="button"
+        href={props.link}
         width={props.size}
-        src={props.image}
-        srcSet={`${props.image}`}
-        alt={props.name}
-        loading="lazy"
-      />
+        sx={{
+          margin: "auto",
+          alignSelf: "center",
+          backgroundColor: "black",
+        }}
+      >
+        <img
+          height={props.size}
+          width={props.size}
+          src={props.image}
+          srcSet={`${props.image}`}
+          alt={props.name}
+          loading="lazy"
+        />
+      </Link>
+
       <ImageListItemBar
-        sx={{ fontSize: "5px", maxWidth: "100%", maxHeight: "100%" }}
+        sx={{
+          fontSize: "5px",
+          maxWidth: "100%",
+          maxHeight: "100%",
+        }}
         title={props.name}
-        subtitle={
-          <Link component={Button} variant="button" href={props.link}>
-            Listen now {">"}
-          </Link>
-        }
+        // subtitle={}
         position="below"
       />
     </>
