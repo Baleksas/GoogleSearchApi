@@ -1,6 +1,5 @@
-# ONNote - Web app to find songs
+# Web application to find songs using google search
 
-![Sample App Image]()
 
 ## Api
 
@@ -10,5 +9,4 @@
 
 ## Description
 
-    1. Displays ...
-    2. Finds top results from your search source (currently text)
+    Find top results from your search source (currently text)
